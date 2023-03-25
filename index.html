@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Zuzana Náprstková">
+    <meta name="description" content="Kalkulačka pro výpočet nákladů na platební bránu nebo terminál. Součást portfolia Zuzany Náprstkové - front-end kodérky.">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <title>Kalkulačka nákladů platební brány | Zuzana Náprstková</title>
+</head>
+<body>
+    <header class="primary-header">
+        <div class="container">
+            <a href="https://www.zuzana-n.cz"><img class=logo src="/images/logo 90x60 light.png" alt="Logo Z-N"></a>
+            <button class="button btn-secondary"><a href="https://www.zuzana-n.cz">Zpět na hlavní stranu</a></button>
+            <button class="button btn-cta btn-cta-header"><a href="#contact">Začněme spolupráci</a></button>
+        </div>
+        <div class="up-btn"><a href="#home" title="Zpět nahoru">^</a></div>
+    </header>
+    <main>
+        <section class="padding-block-lrg">
+            <h1 id="home" class="fs-primary-heading fw-bold">Kalkulačka nákladů platební brány</h1>
+            <div class="container">
+                <div class="content">
+                    <p class="intro">S touto kalkulačkou zjistíte, kolik zaplatíte za platební bránu nebo terminál s ohledem na objem a průměrnou výši transakcí, které přijímáte platebními kartami.</p>
+                    <div class="how-to">
+                        <h2 class="fs-secondary-heading fw-bold">Jak na to</h2>
+                        <p class="how-to">Do horní části formuláře napište, jaký máte nebo plánujete měsíční objem plateb kartou a průměrnou výši transakce kartou. Do dolní části poté uveďte, jaké poplatky vám poskytovatel brány nabízí (zjistíte na jejich stránkách nebo od obchodního zástupce), v políčku CELKEM MĚSÍČNĚ se vám zobrazí výsledná částka, kterou budete platit za měsíc při vámi uvedených transakcích.
+                        </p>
+                    </div>
+                    <h2 class="fs-secondary-heading fw-bold">Důležité informace</h2>
+                    <ul class="list-arrows" role="list">
+                        <li>Vzhledem k možné komplexnosti tématu a poplatků nemohu zaručit, že vám kalkulačka vždy vypočítá přesné náklady. Nemůžu tedy ani brát zodpovědnost za rozhodnutí, která podle dat z kalkulačky uděláte.
+                        </li>
+                        <li><span class="fw-bold">Cena</span> platební brány nebo terminálu <span class="fw-bold">nemá být váš jediný faktor</span> během rozhodování, které řešení si vyberete. 
+                            Záleží i na faktorech jako spolehlivost, důvěryhodnost a zákaznický servis každého řešení.
+                        </li>
+                        <li>Výsledek bude zaokrouhlen na <span class="fw-bold">3 desetinná místa</span>.</li>
+                        <li>Tato kalkulačka <span class="fw-bold">nesbírá žádná data</span>, takže také nikam nic neposílá a neukládá. Proto také, pokud stránku aktualizujete nebo zavřete,
+                            vyplněné údaje mohou zmizet.
+                        </li>
+                        <li>Za vytvoření této kalkulačky jsem žádnou odměnu nedostala a nejsem spojená s žádnou firmou, která poskytuje takové řešení.
+                            Pro svoje podnikání ohledně e-shopu využívám řešení od jistých firem, ale to neovlivňuje fungování kalkulačky.
+                        </li>
+                    </ul>
+                    <div class="calculator">
+                        <h2 class="fs-secondary-heading fw-bold">Kalkulačka</h2>
+                        <details class="tip-key">
+                            <summary><span class="fw-bold" style="color: var(--clr-accent-400)">Vysvětlivky</span></summary>
+                            <p><span class="fw-bold">Měsíční objem karetních transakcí (Kč)</span> = součet objemu transakcí, které u vás zákazníci udělají kartou za měsíc.</p>
+                            <p><span class="fw-bold">Průměrná výše transakce kartou (Kč)</span> – vypočítáte ji třeba tak, že vydělíte objem transakcí jejich počtem.</p>
+                            <p><span class="fw-bold">Poskytovatel/Typ služby</span> – zde si můžete podle potřeby označit, o jakého poskytovatele nebo o jakou konkrétní službu se jedná.</p>
+                            <p><span class="fw-bold">% poplatek z transakce</span> = jaké procento si poskytovatel strhne z částky. Zapište ho pouze jako číslo, 
+                                tedy bez znaménka %. </p>
+                            <p><span class="fw-bold">Fixní poplatek z transakce</span> = jakou pevně danou částku si poskytovatel strhne u každé transakce. Většinou v jednotkách Kč.</p>
+                            <p><span class="fw-bold">Fixní měsíční poplatek</span> = kolik zaplatíte poskytovateli měsíčně. Můžete sem i připočítat další poplatky, třeba za výplatu peněz.</p>
+                        </details>
+                        <div class="user-input">
+                            <div class="user-input-item">
+                                <span class="required"><label for="">Měsíční objem karetních transakcí (Kč)</label></span>
+                                <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate" id="num-transaction" step="0.00000001" inputmode="decimal" required oninput="getTotal()">
+                            </div>
+                            <div class="user-input-item">
+                                <span class="required"><label for="">Průměrná výše transakce kartou (Kč)</label></span>
+                                <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate" id="avg-transaction" step="0.00000001" inputmode="decimal" required oninput="getTotal()">
+                            </div>
+                        </div>
+                        <div class="output-table">
+                            <div class="line">
+                                <div class="form-field">
+                                    <label for="fld-provider">Poskytovatel/Typ služby</label>
+                                    <input class="input" placeholder="Nepovinné">
+                                </div>
+                                <div class="form-field">
+                                    <label for="perc-fee">% poplatek z transakce</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="input perc-fee validate" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 0.5" oninput="getTotal()">
+                                </div>
+                                <div class="form-field">
+                                    <label for="fixed-fee">Fixní poplatek z transakce</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="input fixed-fee validate" step="0.00000001"  inputmode="decimal" placeholder="Vložte jen číslo, př. 2,1" oninput="getTotal()">
+                                </div>
+                                <div class="form-field">
+                                    <label for="mnth-fee">Fixní měsíční poplatek</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate input mnth-fee" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 99" oninput="getTotal()">
+                                </div>
+                                <div class="form-field-end fw-bold">
+                                    <label for="total">CELKEM MĚSÍČNĚ</label>
+                                    <div id="total" class="total"></div>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <div class="form-field">
+                                    <label for="fld-provider" class="no-show">Poskytovatel/Typ služby</label>
+                                    <input class="input" placeholder="Nepovinné">
+                                </div>
+                                <div class="form-field">
+                                    <label for="perc-fee" class="no-show">% poplatek z transakce</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate input perc-fee" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 0.5" oninput="getTotal()">
+                                </div>
+                                <div class="form-field">
+                                    <label for="fixed-fee" class="no-show">Fixní poplatek z transakce</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate input fixed-fee" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 2,1" oninput="getTotal()">
+                                </div>
+                                <div class="form-field">
+                                    <label for="mnth-fee" class="no-show">Fixní měsíční poplatek</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate input mnth-fee" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 99" oninput="getTotal()">
+                                </div>
+                                <div class="form-field-end fw-bold">
+                                    <label for="total" class="no-show">CELKEM MĚSÍČNĚ</label>
+                                    <div id="total" class="total"></div>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <div class="form-field">
+                                    <label for="fld-provider" class="no-show">Poskytovatel/Typ služby</label>
+                                    <input class="input" placeholder="Nepovinné">
+                                </div>
+                                <div class="form-field">
+                                    <label for="perc-fee" class="no-show">% poplatek z transakce</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate input perc-fee" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 0.5" oninput="getTotal()">
+                                </div>
+                                <div class="form-field">
+                                    <label for="fixed-fee" class="no-show">Fixní poplatek z transakce</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate input fixed-fee" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 2,1" oninput="getTotal()">
+                                </div>
+                                <div class="form-field">
+                                    <label for="mnth-fee" class="no-show">Fixní měsíční poplatek</label>
+                                    <input type="text" pattern="^[0-9]*([,.][0-9]+)?$" class="validate input mnth-fee" step="0.00000001" inputmode="decimal" placeholder="Vložte jen číslo, př. 99" oninput="getTotal()">
+                                </div>
+                                <div class="form-field-end fw-bold">
+                                    <label for="total" class="no-show">CELKEM MĚSÍČNĚ</label>
+                                    <div id="total" class="total"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btns">
+                            <button id="add-new" class="button btn-secondary">+ PŘIDAT DALŠÍ</button>
+                            <button id="calculate" class="button btn-cta" onclick="getTotal()">VYPOČÍTAT</button>   
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                    <div class="why">
+                        <h2 class="fs-secondary-heading fw-bold">Proč jsem vytvořila tuto kalkulačku</h2>
+                        <p class="why">Na začátku podnikání mě zajímalo, jaké řešení pro platební terminály a brány je pro mě nejvýhodnější. Tehdy mi nezbylo než si vytvořit excelovou tabulku s výpočty. Od té doby stále vidím podnikatele, kteří se ptají „Jaká je nejlevnější platební brána?". Někdo prostě nemá čas nebo znalosti potřebné k vytvoření vlastního propočtu. Takže když jsem začala pracovat na projektech s JavaScriptem do portfolia, řekla jsem si, co kdybych vytvořila kalkulačku, která spočítá náklady za platební bránu za podnikatele?
+                        </p>
+                    </div>
+                    <h2 class="fs-secondary-heading fw-bold">Plánované úpravy</h2>
+                    <ul class="list-arrows" role="list">
+                        <li>Doplnění více možností poplatků – některé brány si totiž například účtují i za každý převod peněz</li>
+                        <li>Možnost smazat nepotřebné řádky a data</li>
+                        <li>Další vylepšení – klidně mi dejte vědět, co vám chybí nebo nefunguje!</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="padding-block-lrg bg-prim-400 white-text">
+            <div class="contact">
+                <h2 class="fs-secondary-heading fw-bold">Kontakt</h2>
+                <p class="contact-p">Máte zájem o úpravu vaší stránky, nebo hledáte člena do týmu? Napište email nebo zavolejte a já se vám ozvu co nejdříve zpět!</p>
+                <div class="flex">
+                    <div class="contact-info">
+                        <a href="mailto:info@zuzana-n.cz"><img src="https://www.zuzana-n.cz/images/mail icon.svg" alt="Emailová adresa" class="filter-light" title="Napsat email"></a>
+                        <div class="contact-row"><a title="Napsat email" href="mailto:info@zuzana-n.cz">info@zuzana-n.cz</a><span title="Zkopírovat email"><svg xmlns="http://www.w3.org/2000/svg" title="Zkopírovat" class="contact-icon" id="email-icon" viewBox="0 0 448 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"/></svg></span></div>
+                        <p></p>
+                        <a href="tel:+420604828515"><img src="https://www.zuzana-n.cz/images/call icon.svg" alt="Telefonní číslo" class="filter-light" title="Zavolat"></a>
+                        <div class="contact-row"><a title="Zavolat" href="tel:+420604828515">+420 604 828 515</a><span title="Zkopírovat tel. číslo"><svg xmlns="http://www.w3.org/2000/svg" title="Zkopírovat" class="contact-icon" id="phone-icon" viewBox="0 0 448 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"/></svg></span></div>
+                    </div>
+                    <div class="informace-o-mne">
+                        <h3 class="udaje fw-bold">Údaje</h3>
+                        <p>Ing. Zuzana Náprstková</p>
+                        <p>IČ: 14041022</p>
+                        <p>Kladenská 409/9</p>
+                        <p>Praha 6 160 00</p>
+                        <p>Nejsem plátce DPH.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-prim-400">
+        <div class="sm-ctr">
+            <a href="#about"><img class=logo src="/images/logo 90x60 dark.png" alt="Logo Z-N"></a>
+            <div>
+                <nav class="footer-nav">
+                    <ul aria-label="footer" role="list">
+                        <li><a href="https://www.zuzana-n.cz/#coumim">Co umím</a></li>
+                        <li><a href="https://www.zuzana-n.cz/#mywork">Moje práce</a></li>
+                        <li><a href="https://www.zuzana-n.cz/#contact">Kontakt</a></li>
+                        <li><a href="https://www.zuzana-n.cz/#about">O mně</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>    
+        <div class="copyright">
+            <p>Copyright 2023, Zuzana Náprstková. Všechna práva vyhrazena.</p>
+            <p>Vaše data nesbírám. Tyto stránky využívají pouze technické cookies, ke kterým nepotřebuji váš souhlas.</p>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
