@@ -2,7 +2,7 @@
 Tato kalkulačka pomáhá podnikatelům se rozhodnout, jakou platební bránu nebo terminál zvolit. 
 Ukazuje jim totiž, kolik cca za ni zaplatí při jejich objemu a počtu transakcí. Tyto faktory jsou totiž jiné pro každého podnikatele, takže nelze říct, že jedno řešení je nejlevnější pro všechny.
 
-Odkaz na kalkulačku [najdete zde](https://www.zuzana-n.cz/kalkulacka-brany/).
+[Kalkulačku najdete zde](https://www.zuzana-n.cz/kalkulacka-brany/).
 
 # Stack
 HTML, CSS a JavaScript (vanilla).
